@@ -188,6 +188,14 @@ class SecureFileManagerGUI:
                 messagebox.showerror("Unsafe File", "File too large or unsafe")
                 return
             os.startfile(filepath)
+            try:
+    os.startfile(filepath)
+except AttributeError:
+    messagebox.showerror("Error", "File cannot be opened on this OS")
+except Exception as e:
+    messagebox.showerror("Error", f"Could not open file: {e}")
+
+
 
     def encrypt_selected(self):
         filepath = self.get_selected_filepath()
@@ -223,3 +231,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = SecureFileManagerGUI(root)
     root.mainloop()
+
