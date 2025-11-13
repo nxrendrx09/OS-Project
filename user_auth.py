@@ -9,7 +9,11 @@ DB_CONFIG = {
 }
 
 def get_connection():
-    return mysql.connector.connect(**DB_CONFIG)
+    try:
+        return mysql.connector.connect(**DB_CONFIG)
+    except mysql.connector.Error as err:
+        print("Database connection error:", err)
+        return None
 
 def register_user(username, password, role="user"):
     conn = get_connection()
@@ -49,3 +53,4 @@ def verify_user(username, password):
     if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
         return True, role
     return False, None
+
