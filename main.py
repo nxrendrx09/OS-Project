@@ -1,5 +1,6 @@
 import os
 import tkinter as tk
+import tkinter
 from tkinter import filedialog, messagebox
 from user_auth import register_user, verify_user
 from file_security import has_permission, is_safe_file, encrypt_file, decrypt_file, get_metadata
