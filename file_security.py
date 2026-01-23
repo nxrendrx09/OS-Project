@@ -31,6 +31,11 @@ def get_metadata(filepath):
         return str(e)
 
 def encrypt_file(filepath):
+    # 🔥 ADD THIS PART HERE (5th point)
+    if not os.path.exists(filepath):
+        return "File does not exist."
+    # 🔥 END of 5th point
+
     try:
         with open(filepath, "rb") as f:
             data = f.read()
@@ -40,8 +45,12 @@ def encrypt_file(filepath):
         return "File encrypted!"
     except Exception as e:
         return f"Encryption failed: {e}"
-
 def decrypt_file(encpath):
+    # 🔥 ADD THIS HERE
+    if not os.path.exists(encpath):
+        return "Encrypted file not found."
+    # 🔥 END
+
     try:
         with open(encpath, "rb") as ef:
             data = ef.read()
